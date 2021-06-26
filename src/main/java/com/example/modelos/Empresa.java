@@ -30,22 +30,23 @@ public class Empresa {
 		this.id = id;
 	}
 	public String getNome() {
-		return nome;
+		return nome.toUpperCase();
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toLowerCase();
 	}
 	public String getCnpj() {
 		return cnpj;
 	}
 	public void setCnpj(String cnpj) {
+		
 		this.cnpj = cnpj;
 	}
 	public String getEndereco() {
-		return endereco;
+		return endereco.toUpperCase();
 	}
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		this.endereco = endereco.toLowerCase();
 	}
 	public String getTelefone() {
 		return telefone;
@@ -54,10 +55,10 @@ public class Empresa {
 		this.telefone = telefone;
 	}
 	public String getEmail() {
-		return email;
+		return email.toLowerCase();
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.toLowerCase();
 	}
 	
 
