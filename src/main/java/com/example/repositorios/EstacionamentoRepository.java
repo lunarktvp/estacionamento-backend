@@ -7,5 +7,5 @@ import com.example.modelos.Estacionamento;
 public interface EstacionamentoRepository extends JpaRepository<Estacionamento, Long> {
 	
 	Estacionamento findById(long id);
-
+	
 }
