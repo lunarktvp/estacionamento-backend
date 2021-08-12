@@ -9,6 +9,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	
 	Funcionario findById(long id);
 	
-	@Query(value="select max(matricula+1) from funcionarios", nativeQuery=true)
+	@Query(value="select (count(matricula)+1) from funcionarios", nativeQuery=true)
 	int pegamatricula();
 }
