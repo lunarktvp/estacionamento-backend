@@ -2,29 +2,43 @@ package com.example.modelos;
 
 import java.sql.Date;
 
-public class Funcionario {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private long id;
+@Entity
+@Table(name="funcionarios")
+public class Funcionario {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long matricula;
+	
 	private String nome;
 	private String cpf;
-	private Date dataNascimento;
-	private String endereco;
+	private String nascimento;
+	private String cep;
+	private String logradouro;
+	private String complemento;
+	private String cidade;
+	private String estado;
 	private String telefone;
 	private String email;
 	private String senha;
 	
-	
-	public long getId() {
-		return id;
+	public long getMatricula() {
+		return matricula;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setMatricula(long matricula) {
+		this.matricula = matricula;
 	}
 	public String getNome() {
-		return nome;
+		return nome.toUpperCase();
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toLowerCase();
 	}
 	public String getCpf() {
 		return cpf;
@@ -32,17 +46,41 @@ public class Funcionario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public Date getDataNascimento() {
-		return dataNascimento;
+	public String getNascimento() {
+		return nascimento;
 	}
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
 	}
-	public String getEndereco() {
-		return endereco;
+	public String getCep() {
+		return cep;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	public String getLogradouro() {
+		return logradouro.toUpperCase();
+	}
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro.toLowerCase();
+	}
+	public String getComplemento() {
+		return complemento.toUpperCase();
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento.toLowerCase();
+	}
+	public String getCidade() {
+		return cidade.toUpperCase();
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade.toLowerCase();
+	}
+	public String getEstado() {
+		return estado.toUpperCase();
+	}
+	public void setEstado(String estado) {
+		this.estado = estado.toLowerCase();
 	}
 	public String getTelefone() {
 		return telefone;
@@ -51,10 +89,10 @@ public class Funcionario {
 		this.telefone = telefone;
 	}
 	public String getEmail() {
-		return email;
+		return email.toLowerCase();
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.toLowerCase();
 	}
 	public String getSenha() {
 		return senha;
@@ -62,6 +100,8 @@ public class Funcionario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-		
+
+	
+	
 	
 }
