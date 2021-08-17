@@ -65,6 +65,7 @@ public class FuncionarioController {
 		
 		@GetMapping("/mat")
 		public int pegaMatricula() {
+			
 			return funcRep.pegamatricula();
 		}
 }
