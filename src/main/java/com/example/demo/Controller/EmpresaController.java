@@ -1,4 +1,4 @@
-package com.example.Controladores;
+package com.example.demo.Controller;
 
 import java.util.List;
 
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.modelos.Empresa;
-import com.example.repositorios.EmpresaRepository;
+import com.example.demo.Model.Empresa;
+import com.example.demo.Repository.EmpresaRepository;
+
 
 
 //Essa classe faz todas as movimetantações referentes a empresa

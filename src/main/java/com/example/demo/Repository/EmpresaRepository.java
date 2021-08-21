@@ -1,8 +1,9 @@
-package com.example.repositorios;
+package com.example.demo.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.modelos.Empresa;
+import com.example.demo.Model.Empresa;
+
 
 public interface EmpresaRepository extends JpaRepository <Empresa, Long> {
 	

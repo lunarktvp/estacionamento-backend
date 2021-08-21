@@ -1,4 +1,4 @@
-package com.example.Controladores;
+package com.example.demo.Controller;
 
 import java.util.List;
 
@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.modelos.Funcionario;
-import com.example.repositorios.FuncionarioRepository;
+import com.example.demo.Model.Funcionario;
+import com.example.demo.Repository.FuncionarioRepository;
+
+
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
