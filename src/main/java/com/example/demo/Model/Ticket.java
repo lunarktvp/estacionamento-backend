@@ -1,10 +1,15 @@
 package com.example.demo.Model;
 
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +31,11 @@ public class Ticket {
 	private String placa;
 
 	
-	
+	@PrePersist
+	public void prePersist () {
+		
+		horaEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
+	}
 	
 	public long getId() {
 		return id;
