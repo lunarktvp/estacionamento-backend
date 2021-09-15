@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Cliente {
 	
 	private String nome;
 	
+	@Column(unique=true)
 	private String cgc;
 	
 	@JsonFormat(pattern="dd/MM/YYYY")
