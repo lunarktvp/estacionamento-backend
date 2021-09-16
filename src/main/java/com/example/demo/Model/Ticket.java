@@ -27,6 +27,18 @@ public class Ticket {
 	@Column(name="hora_entrada")
 	private String horaEntrada;
 	
+	@Column(name="data_saida")
+	private String dataSaida;
+	
+	@Column(name="hora_saida")
+	private String horaSaida;
+	
+	private String valor;
+	
+	private String situacao;
+	
+	
+
 	@Column
 	private String placa;
 
@@ -35,6 +47,30 @@ public class Ticket {
 	public void prePersist () {
 		
 		horaEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
+	}
+	
+	public String getDataSaida() {
+		return dataSaida;
+	}
+
+	public void setDataSaida(String dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+
+	public String getHoraSaida() {
+		return horaSaida;
+	}
+
+	public void setHoraSaida(String horaSaida) {
+		this.horaSaida = horaSaida;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 	
 	public long getId() {
@@ -67,6 +103,14 @@ public class Ticket {
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 	
 	
