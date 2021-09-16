@@ -1,13 +1,10 @@
 package com.example.demo.Model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name="funcionarios")
@@ -18,8 +15,6 @@ public class Funcionario {
 	private long matricula;
 	
 	private String nome;
-	@CPF
-	@Column(unique =true)
 	private String cpf;
 	private String nascimento;
 	private String cep;

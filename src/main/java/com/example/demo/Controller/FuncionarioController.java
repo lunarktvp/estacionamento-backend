@@ -70,6 +70,4 @@ public class FuncionarioController {
 			
 			return funcRep.pegamatricula();
 		}
-		
-		
 }
