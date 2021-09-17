@@ -33,7 +33,7 @@ public class Ticket {
 	@Column(name="hora_saida")
 	private String horaSaida;
 	
-	private String valor;
+	private float valor;
 	
 	private String situacao;
 	
@@ -46,7 +46,18 @@ public class Ticket {
 	@PrePersist
 	public void prePersist () {
 		
-		horaEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
+		if(horaEntrada.isEmpty()) {
+			horaEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+			dataEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		}else {
+			horaSaida = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+			dataSaida = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		}
+		
+		
+		
+		
+		
 	}
 	
 	public String getDataSaida() {
@@ -65,11 +76,11 @@ public class Ticket {
 		this.horaSaida = horaSaida;
 	}
 
-	public String getValor() {
+	public float getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(float valor) {
 		this.valor = valor;
 	}
 	

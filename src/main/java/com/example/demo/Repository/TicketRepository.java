@@ -11,7 +11,10 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>{
 
 	Ticket findById(long id);
 	
-	@Query(nativeQuery=true, value="select * from tickets order by hora_entrada desc, situacao")
+	@Query(nativeQuery=true, value="select * from tickets order by situacao")
 	List<Ticket> findabertos();
+	
+	@Query(nativeQuery=true, value="select * from tickets where situacao like '9' order by situacao")
+	List<Ticket> FindFechadosNoDia();
 
 }

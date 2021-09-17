@@ -47,9 +47,16 @@ public class TicketController {
 	
 	@GetMapping
 	@RequestMapping("/listar")
-	public List <Ticket> ListarLickets(){
+	public List<Ticket> ListarLickets(){
 		
 		return ticketRep.findabertos();
+	}
+	
+	@GetMapping
+	@RequestMapping("/encerradosdia")
+	public List<Ticket> ListarFehcadosNoDia(){
+		
+		return ticketRep.FindFechadosNoDia();
 	}
 	
 }
