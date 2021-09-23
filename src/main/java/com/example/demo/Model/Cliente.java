@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,17 +19,22 @@ public class Cliente {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@NotEmpty
 	private String nome;
 	
+	@CPF
 	private String cgc;
 	
 	@JsonFormat(pattern="dd/MM/YYYY")
 	private String nascimento;
 	
+	@NotEmpty
 	private String endereco;
 	
+	@NotEmpty
 	private String telefone;
 	
+	@NotEmpty
 	private String email;
 
 	
