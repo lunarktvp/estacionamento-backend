@@ -30,7 +30,7 @@ public class VeiculoController {
 	}
 
 
-	@GetMapping("listar/{id}")
+	@GetMapping("/listar/{id}")
 	public List<Veiculo> ListarPorCliente(@PathVariable(value="id") long id) {
 		
 		return veiculoRep.VeiculosPorcliente(id);
