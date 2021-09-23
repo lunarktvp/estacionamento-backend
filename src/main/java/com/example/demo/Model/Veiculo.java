@@ -19,8 +19,8 @@ public class Veiculo {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	
-	@Column(unique=true)
 	@NotEmpty
+	@Column(unique=true)
 	private String placa;
 	
 	@ManyToOne
