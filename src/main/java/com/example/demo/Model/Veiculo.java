@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table
@@ -17,6 +19,8 @@ public class Veiculo {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	
+	@Column(unique=true)
+	@NotEmpty
 	private String placa;
 	
 	@ManyToOne
