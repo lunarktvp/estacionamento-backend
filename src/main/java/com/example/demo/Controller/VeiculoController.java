@@ -44,6 +44,7 @@ public class VeiculoController {
 	
 	@GetMapping("/detalhe/{placa}")
 	public Veiculo VeiculoPorPlaca(@PathVariable String placa){
+		System.out.println(veiculoRep.VeiculoPorPlaca(placa).getPlaca());
 		return veiculoRep.VeiculoPorPlaca(placa);
 	}
 
