@@ -41,5 +41,10 @@ public class VeiculoController {
 		
 		return veiculoRep.findAll();
 	}
+	
+	@GetMapping("/detalhe/{placa}")
+	public Veiculo VeiculoPorPlaca(@PathVariable String placa){
+		return veiculoRep.VeiculoPorPlaca(placa);
+	}
 
 }
