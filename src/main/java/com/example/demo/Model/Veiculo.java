@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -23,7 +23,7 @@ public class Veiculo {
 	@Column(unique=true)
 	private String placa;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 
@@ -43,7 +43,7 @@ public class Veiculo {
 	}
 
 	public void setPlaca(String placa) {
-		this.placa = placa;
+		this.placa = placa.toUpperCase();
 	}
 
 	public Cliente getCliente() {

@@ -2,15 +2,22 @@ package com.example.demo.Model;
 
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name="tickets")
@@ -20,109 +27,142 @@ public class Ticket {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@Column(name="data_entrada")
-	private String dataEntrada;
-	
-	
-	@Column(name="hora_entrada")
-	private String horaEntrada;
-	
-	@Column(name="data_saida")
-	private String dataSaida;
-	
-	@Column(name="hora_saida")
-	private String horaSaida;
-	
-	private float valor;
-	
-	private String situacao;
-	
-	
-
 	@Column
-	private String placa;
+	private LocalDateTime entrada;
+	
+	@Column
+	private LocalDateTime saida;
+	
+	@Column
+	private int permanencia;
+	
+	@Column
+	private float valor;
 
+	@ManyToOne
+	@JoinColumn(name="id_cliente")
+	private Cliente cliente;
+	
+	@Column
+	private int situacao;
+	
+	@NotEmpty
+	private String placa;
+	
+	@Column(name="tipo_pagamento")
+	private int tipoPagamento;
+	
 	
 	@PrePersist
 	public void prePersist () {
 		
-		if(horaEntrada.isEmpty()) {
-			horaEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-			dataEntrada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		if(id>0) {
+			saida = LocalDateTime.now().withSecond(0);
+			permanencia = (int) entrada.until(saida, ChronoUnit.MINUTES);
 		}else {
-			horaSaida = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-			dataSaida = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			entrada = LocalDateTime.now().withSecond(0);
+			permanencia = 0;
 		}
-		
-		
-		
-		
-		
 	}
 	
-	public String getDataSaida() {
-		return dataSaida;
+	@PostLoad
+	public void postLoad() {
+		saida = LocalDateTime.now().withSecond(0);
+		permanencia = (int) entrada.until(saida, ChronoUnit.MINUTES);
+		System.out.println(saida);
 	}
 
-	public void setDataSaida(String dataSaida) {
-		this.dataSaida = dataSaida;
-	}
 
-	public String getHoraSaida() {
-		return horaSaida;
-	}
-
-	public void setHoraSaida(String horaSaida) {
-		this.horaSaida = horaSaida;
-	}
-
-	public float getValor() {
-		return valor;
-	}
-
-	public void setValor(float valor) {
-		this.valor = valor;
-	}
+	
 	
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getDataEntrada() {
-		return dataEntrada;
+	@JsonFormat(pattern="HH:mm dd/MM/yyyy")
+	public LocalDateTime getEntrada(){
+		return entrada;
 	}
 
-	public void setDataEntrada(String dataEntrada) {
-		this.dataEntrada = dataEntrada;
+	
+	public void setEntrada(LocalDateTime entrada) {
+		this.entrada = entrada;
 	}
 
-	public String getHoraEntrada() {
-		return horaEntrada;
+	@JsonFormat(pattern="HH:mm dd/MM/yyyy")
+	public LocalDateTime getSaida() {
+		return saida;
 	}
 
-	public void setHoraEntrada(String horaEntrada) {
-		this.horaEntrada = horaEntrada;
+
+	public void setSaida(LocalDateTime saida) {
+		this.saida = saida;
 	}
+
+
+	public float getValor() {
+		return valor;
+	}
+
+
+	public void setValor(float valor) {
+		this.valor = valor;
+	}
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+	public int getSituacao() {
+		return situacao;
+	}
+
+
+	public void setSituacao(int situacao) {
+		this.situacao = situacao;
+	}
+
 
 	public String getPlaca() {
 		return placa;
 	}
 
+
 	public void setPlaca(String placa) {
-		this.placa = placa;
+		this.placa = placa.toUpperCase();
 	}
 
-	public String getSituacao() {
-		return situacao;
+
+	public int getTipoPagamento() {
+		return tipoPagamento;
 	}
 
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
+
+	public void setTipoPagamento(int tipoPagamento) {
+		this.tipoPagamento = tipoPagamento;
 	}
+
+	public int getPermanencia() {
+		return permanencia;
+	}
+
+	public void setPermanencia(int permanencia) {
+		this.permanencia = permanencia;
+	}
+	
+	
 	
 	
 	
