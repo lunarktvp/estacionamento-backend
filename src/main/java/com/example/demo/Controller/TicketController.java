@@ -59,4 +59,11 @@ public class TicketController {
 		return ticketRep.FindFechadosNoDia();
 	}
 	
+	@GetMapping
+	@RequestMapping("/ticketativo/{placa}")
+	public Ticket AtivoporPlaca(@PathVariable(value="placa") String placa) {
+		
+		return ticketRep.TicketAtivoPorPlaca(placa);
+	}
+	
 }

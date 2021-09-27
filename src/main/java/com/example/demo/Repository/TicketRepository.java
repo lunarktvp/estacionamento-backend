@@ -16,5 +16,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>{
 	
 	@Query(nativeQuery=true, value="select * from tickets where situacao like '9' order by situacao")
 	List<Ticket> FindFechadosNoDia();
+	
+	@Query(nativeQuery=true, value="select * from tickets where situacao <> 9 and placa ilike ?1")
+	Ticket TicketAtivoPorPlaca(String placa);
 
 }
