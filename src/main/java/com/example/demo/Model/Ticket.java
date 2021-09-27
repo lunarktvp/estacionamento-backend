@@ -69,7 +69,6 @@ public class Ticket {
 	public void postLoad() {
 		saida = LocalDateTime.now().withSecond(0);
 		permanencia = (int) entrada.until(saida, ChronoUnit.MINUTES);
-		System.out.println(saida);
 	}
 
 

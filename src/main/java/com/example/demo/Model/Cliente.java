@@ -1,15 +1,20 @@
 package com.example.demo.Model;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="clientes")
@@ -36,8 +41,13 @@ public class Cliente {
 	
 	@NotEmpty
 	private String email;
-
 	
+	@Column
+	private int situacao;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy="cliente")
+	private List<Veiculo> veiculo;
 	
 	
 	public long getId() {
@@ -95,6 +105,30 @@ public class Cliente {
 	public void setNascimento(String nacimento) {
 		this.nascimento = nacimento;
 	}
+
+	public int getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(int situacao) {
+		this.situacao = situacao;
+	}
+
+
+	public String getNascimento() {
+		return nascimento;
+	}
+
+	public List<Veiculo> getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(List<Veiculo> veiculo) {
+		this.veiculo = veiculo;
+	}
+
+
+	
 	
 	
 	
