@@ -30,22 +30,26 @@ public class VeiculoController {
 	}
 
 
+	@GetMapping("/listar")
+	public List<Veiculo> ListarVeiculos() {
+		
+		return veiculoRep.findAll();
+	}
+	
+	
 	@GetMapping("/listar/{id}")
 	public List<Veiculo> ListarPorCliente(@PathVariable(value="id") long id) {
 		
 		return veiculoRep.VeiculosPorcliente(id);
 	}
 	
-	
-	public List<Veiculo> ListarVeiculos(){
-		
-		return veiculoRep.findAll();
-	}
-	
-	@GetMapping("/detalhe/{placa}")
+	@GetMapping
+	@RequestMapping("/detalhe/{placa}")
 	public Veiculo VeiculoPorPlaca(@PathVariable(value="placa") String placa){
-		System.out.println(veiculoRep.VeiculoPorPlaca(placa));
-		return veiculoRep.VeiculoPorPlaca(placa);
+		
+		System.out.println(veiculoRep.findByplaca(placa).getCliente());
+		
+		return veiculoRep.findByplaca(placa);
 	}
 
 }
