@@ -4,18 +4,21 @@ package com.example.demo.Model;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
@@ -39,7 +42,8 @@ public class Ticket {
 	@Column
 	private float valor;
 
-	@OneToOne
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 	
@@ -51,6 +55,7 @@ public class Ticket {
 	
 	@Column(name="tipo_pagamento")
 	private int tipoPagamento;
+	
 	
 	
 	@PrePersist

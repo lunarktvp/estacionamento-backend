@@ -43,12 +43,8 @@ public class VeiculoController {
 		return veiculoRep.VeiculosPorcliente(id);
 	}
 	
-	@GetMapping
-	@RequestMapping("/detalhe/{placa}")
-	public Veiculo VeiculoPorPlaca(@PathVariable(value="placa") String placa){
-		
-		System.out.println(veiculoRep.findByplaca(placa).getCliente());
-		
+	@GetMapping("/detalhe/{placa}")
+	public Veiculo VeiculoPorPlaca(@PathVariable String placa){		
 		return veiculoRep.findByplaca(placa);
 	}
 

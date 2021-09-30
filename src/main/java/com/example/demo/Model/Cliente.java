@@ -49,6 +49,10 @@ public class Cliente {
 	@OneToMany(mappedBy="cliente")
 	private List<Veiculo> veiculo;
 	
+	@JsonManagedReference
+	@OneToMany(mappedBy="cliente")
+	private List<Ticket> ticket;
+	
 	
 	public long getId() {
 		return id;

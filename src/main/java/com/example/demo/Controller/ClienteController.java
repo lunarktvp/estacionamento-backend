@@ -44,6 +44,12 @@ public class ClienteController {
 		
 		return clienteRep.findById(id);
 	}
+	
+	@GetMapping("/buscapor/{placa}")
+	public Cliente DetalhesPorPlaca(@PathVariable(value="placa") String placa) {
+		
+		return clienteRep.buscaporPlaca(placa);
+	}
 
 
 	@PutMapping("/alterar")
