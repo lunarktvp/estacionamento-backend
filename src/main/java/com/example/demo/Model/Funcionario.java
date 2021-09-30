@@ -25,6 +25,7 @@ public class Funcionario {
 	private String telefone;
 	private String email;
 	private String senha;
+	private int situacao;
 	
 	public long getMatricula() {
 		return matricula;
@@ -97,6 +98,12 @@ public class Funcionario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public int getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(int situacao) {
+		this.situacao = situacao;
 	}
 
 	
